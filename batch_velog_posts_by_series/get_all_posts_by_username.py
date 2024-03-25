@@ -1,5 +1,5 @@
-from velog_migration import velog_config
-from velog_migration.execute_graphql_query import execute_graphql_query
+from batch_velog_posts_by_series import velog_config
+from batch_velog_posts_by_series.execute_graphql_query import execute_graphql_query
 
 
 def get_all_posts(username):

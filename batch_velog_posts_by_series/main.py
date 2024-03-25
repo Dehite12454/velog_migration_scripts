@@ -1,9 +1,9 @@
 import os
 
-from velog_migration import velog_config
-from velog_migration.get_all_posts_by_username import get_all_posts
-from velog_migration.get_series_by_username import send_graphql_query
-from velog_migration.replace_special_characters import replace_special_characters
+from batch_velog_posts_by_series import velog_config
+from batch_velog_posts_by_series.get_all_posts_by_username import get_all_posts
+from batch_velog_posts_by_series.get_series_by_username import send_graphql_query
+from batch_velog_posts_by_series.replace_special_characters import replace_special_characters
 
 # TODO os 환경변수로 이름 받기
 name = "cksgodl"
