@@ -8,8 +8,8 @@ from scripts.batch_velog_posts_by_series.replace_special_characters import repla
 
 # TODO os 환경변수로 이름 받기
 name = "cksgodl"
-# repo_path = '.'
-repo_path = '/'
+repo_path = '.'
+# repo_path = '/'
 repo = git.Repo(repo_path)
 
 series_list = send_graphql_query(query=velog_config.get_series_query, name=name)
@@ -37,10 +37,10 @@ for series in series_list:
         with open(file_path, 'w', encoding='utf-8') as file:
             file.write(post['body'])
 
-            commit_message = f"Add post: {post['title']}"
+            commit_message = f"[UPDATE] {post['title']}"
             print(file_path)
             print(commit_message)
-            # repo.git.add(file_path)
-            # repo.git.commit('-m', commit_message)
+            repo.git.add(file_path)
+            repo.git.commit('-m', commit_message)
             print("--------------")
 

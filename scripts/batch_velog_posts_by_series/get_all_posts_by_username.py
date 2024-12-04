@@ -1,3 +1,4 @@
+import time
 from scripts.batch_velog_posts_by_series import velog_config
 from scripts.batch_velog_posts_by_series.execute_graphql_query import execute_graphql_query
 
@@ -21,5 +22,6 @@ def get_all_posts(username):
             break
         else:
             cursor = posts[-1]['id']  # 이전 결과의 커서 값으로 다음 페이지를 가져옴
+        time.sleep(10)
 
     return all_posts
