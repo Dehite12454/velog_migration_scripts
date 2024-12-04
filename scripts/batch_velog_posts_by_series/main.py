@@ -47,3 +47,4 @@ for series in series_list:
             repo.git.commit('-m', commit_message)
             print("--------------")
 
+repo.git.push()
