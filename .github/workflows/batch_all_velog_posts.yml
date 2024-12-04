@@ -43,3 +43,4 @@ jobs:
     # Python 스크립트 실행
     - name: Run script
       run: python scripts/batch_velog_posts_by_series/main.py
+      working-directory: ./
