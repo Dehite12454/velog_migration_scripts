@@ -42,7 +42,8 @@ jobs:
 
     # Python 스크립트 실행
     - name: Run script
-      working-directory: ./scripts/batch_velog_posts_by_series
       run: |
         pwd
-        python scripts/batch_velog_posts_by_series/main.py
+        cd ./scripts/batch_velog_posts_by_series
+        pwd
+        python main.py
