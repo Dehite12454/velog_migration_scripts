@@ -1,6 +1,6 @@
 import requests
 
-from batch_velog_posts_by_series import velog_config
+from scripts.batch_velog_posts_by_series import velog_config
 
 
 def execute_graphql_query(query, variables):

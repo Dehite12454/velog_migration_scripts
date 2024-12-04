@@ -1,18 +1,19 @@
 import os
+import git
 
-from batch_velog_posts_by_series import velog_config
-from batch_velog_posts_by_series.get_all_posts_by_username import get_all_posts
-from batch_velog_posts_by_series.get_series_by_username import send_graphql_query
-from batch_velog_posts_by_series.replace_special_characters import replace_special_characters
+from scripts.batch_velog_posts_by_series import velog_config
+from scripts.batch_velog_posts_by_series.get_all_posts_by_username import get_all_posts
+from scripts.batch_velog_posts_by_series.get_series_by_username import send_graphql_query
+from scripts.batch_velog_posts_by_series.replace_special_characters import replace_special_characters
 
 # TODO os 환경변수로 이름 받기
 name = "cksgodl"
-# TODO runner 로컬 위치
-repo_path = "C:\\Users\\cksgo\\Desktop\\velog_migration_scripts"
+# repo_path = '.'
+repo_path = '/'
+repo = git.Repo(repo_path)
 
 series_list = send_graphql_query(query=velog_config.get_series_query, name=name)
 all_posts = get_all_posts(name)
-
 filtered_posts = []
 
 for series in series_list:
@@ -36,5 +37,10 @@ for series in series_list:
         with open(file_path, 'w', encoding='utf-8') as file:
             file.write(post['body'])
 
-    print("--------------")
+            commit_message = f"Add post: {post['title']}"
+            print(file_path)
+            print(commit_message)
+            # repo.git.add(file_path)
+            # repo.git.commit('-m', commit_message)
+            print("--------------")
 
