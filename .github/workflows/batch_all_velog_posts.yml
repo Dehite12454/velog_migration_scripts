@@ -4,7 +4,7 @@ on:
   workflow_dispatch:  # 수동 실행 트리거
 
 jobs:
-  update_blog:
+  batch_alL_velog_posts:
     runs-on: ubuntu-latest
 
     steps:
@@ -42,5 +42,7 @@ jobs:
 
     # Python 스크립트 실행
     - name: Run script
-      run: python scripts/batch_velog_posts_by_series/main.py
-      working-directory: ./
+      working-directory: ./scripts/batch_velog_posts_by_series
+      run: |
+        pwd
+        python scripts/batch_velog_posts_by_series/main.py
