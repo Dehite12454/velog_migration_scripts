@@ -47,3 +47,4 @@ jobs:
         cd ./scripts/batch_velog_posts_by_series
         pwd
         python main.py
+      working-directory: ./scripts/batch_velog_posts_by_series
