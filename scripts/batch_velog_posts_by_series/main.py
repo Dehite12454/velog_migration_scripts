@@ -31,7 +31,7 @@ for series in series_list:
         os.makedirs(posts_dir)
 
     # 파일 쓰기
-    for post in filtered_posts:
+    for post in filtered_posts[:1]:
         file_name = replace_special_characters(post['title']) + '.md'
         file_path = os.path.join(posts_dir, file_name)
         with open(file_path, 'w', encoding='utf-8') as file:
