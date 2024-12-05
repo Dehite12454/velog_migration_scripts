@@ -6,16 +6,16 @@ from get_all_posts_by_username import get_all_posts
 from get_series_by_username import send_graphql_query
 from replace_special_characters import replace_special_characters
 
-name = os.getenv("VELOG_ID")
-if not name:
+velog_id = os.getenv("VELOG_ID")
+if not velog_id:
     raise EnvironmentError("Environment variable 'NAME' is required but not set!")
 # name = "cksgodl" # For Test
 repo_path = '.'
 # repo_path = '/' # For Test
 repo = git.Repo(repo_path)
 
-series_list = send_graphql_query(query=velog_config.get_series_query, name=name)
-all_posts = get_all_posts(name)
+series_list = send_graphql_query(query=velog_config.get_series_query, name=velog_id)
+all_posts = get_all_posts(velog_id)
 filtered_posts = []
 
 for series in series_list:
