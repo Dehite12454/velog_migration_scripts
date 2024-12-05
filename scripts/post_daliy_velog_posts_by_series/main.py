@@ -9,7 +9,7 @@ from replace_special_characters import replace_special_characters
 
 velog_id = os.getenv("VELOG_ID")
 if not velog_id:
-   raise EnvironmentError("Environment variable 'NAME' is required but not set!")
+    raise EnvironmentError("Environment variable 'NAME' is required but not set!")
 repo_path = '.'
 repo = git.Repo(repo_path)
 
@@ -31,6 +31,8 @@ for post in recent_posts:
         filtered_posts.append(post)
 
 for today_post in filtered_posts:
+    if today_post['series']['name'] is None:
+        continue
     posts_dir = os.path.join(repo_path, today_post['series']['name'])
     if not os.path.exists(posts_dir):
         os.makedirs(posts_dir)
