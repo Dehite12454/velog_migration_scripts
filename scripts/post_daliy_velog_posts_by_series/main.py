@@ -1,5 +1,6 @@
 import os
 import git
+import time
 from datetime import datetime, timezone
 
 import velog_config
@@ -51,6 +52,9 @@ for today_post in filtered_posts:
         print(f"Writing Post {today_post['title']}")
         print(f"Writing Post Body {today_post['body']}")
         file.write(today_post['body'])
+        file.flush()
+        os.fsync(file.fileno())
+        time.sleep(0.5)
         commit_message = f"[UPDATE] {today_post['title']}"
         repo.git.add(file_path)
         repo.git.commit('-m', commit_message)
