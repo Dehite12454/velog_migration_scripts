@@ -21,7 +21,6 @@ variables = {
 }
 result = execute_graphql_query(velog_config.get_posts_query, variables)
 recent_posts = result['data']['posts']
-print(f"Recent posts: {recent_posts}")
 
 filtered_posts = []
 current_date = datetime.now(timezone.utc).date()  # 현재 날짜 (UTC 기준)
@@ -29,11 +28,8 @@ print(f"Today: {current_date}")
 
 for post in recent_posts:
     released_at_date = datetime.fromisoformat(post["released_at"].replace("Z", "+00:00")).date()
-    print(f"Recent Post date: {released_at_date}")
-
-    testDate = datetime.strptime("2024-11-26", "%Y-%m-%d").date()
-    is_today = released_at_date == testDate  # current_date
-    if is_today:
+    print(f"Read Post - {post['title']}({released_at_date}) ")
+    if released_at_date == current_date:
         filtered_posts.append(post)
 
 for today_post in filtered_posts:
@@ -50,7 +46,6 @@ for today_post in filtered_posts:
 
     with open(file_path, 'w', encoding='utf-8') as file:
         print(f"Writing Post {today_post['title']}")
-        print(f"Writing Post Body {today_post['body']}")
         file.write(today_post['body'])
         file.flush()
         os.fsync(file.fileno())
