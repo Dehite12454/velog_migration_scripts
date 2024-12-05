@@ -1,8 +1,5 @@
 import os
 import git
-import sys
-
-# sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 
 import velog_config
 from get_all_posts_by_username import get_all_posts
