@@ -16,12 +16,10 @@ jobs:
 
     # Git Config 설정
     - name: Set up Git
+      # TODO github id, email, repository 설정
       run: |
-      # TODO github id 설정
         git config --global user.name 'dlgocks1' 
-      # TODO github email 설정
         git config --global user.email 'cksgodl1@naver.com'
-      # TODO github id 및 레포지토리 설정
         git remote set-url origin https://dlgocks1:${{ secrets.GH_PAT }}@github.com/dlgocks1/velog_migration_scripts.git
 
     # 원격 변경 사항을 로컬에 적용
