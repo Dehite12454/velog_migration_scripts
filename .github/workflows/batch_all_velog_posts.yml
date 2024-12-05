@@ -15,7 +15,7 @@ jobs:
     # Git Config 설정
     - name: Set up Git
       run: |
-        git config --global user.name '이해찬'
+        git config --global user.name 'dlgocks1'
         git config --global user.email 'cksgodl1@naver.com'
         git remote set-url origin https://dlgocks1:${{ secrets.GH_PAT }}@github.com/dlgocks1/velog_migration_scripts.git
 
@@ -38,5 +38,7 @@ jobs:
 
     # Python 스크립트 실행
     - name: Run script
+      env:
+        NAME: "cksgodl"  # velog_name을 환경 변수로 설정
       run: |
         python ./scripts/batch_velog_posts_by_series/main.py

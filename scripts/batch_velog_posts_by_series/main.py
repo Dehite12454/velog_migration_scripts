@@ -9,8 +9,10 @@ from scripts.batch_velog_posts_by_series.get_all_posts_by_username import get_al
 from scripts.batch_velog_posts_by_series.get_series_by_username import send_graphql_query
 from scripts.batch_velog_posts_by_series.replace_special_characters import replace_special_characters
 
-# TODO os 환경변수로 이름 받기
-name = "cksgodl"
+name = os.getenv("NAME")  # 환경변수 NAME이 없을 경우 "default_name" 사용
+if not name:
+    raise EnvironmentError("Environment variable 'NAME' is required but not set!")
+# name = "cksgodl"
 repo_path = '.'
 # repo_path = '/'
 repo = git.Repo(repo_path)
@@ -41,10 +43,7 @@ for series in series_list:
             file.write(post['body'])
 
             commit_message = f"[UPDATE] {post['title']}"
-            print(file_path)
-            print(commit_message)
             repo.git.add(file_path)
             repo.git.commit('-m', commit_message)
-            print("--------------")
 
 repo.git.push()
