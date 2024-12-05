@@ -10,14 +10,12 @@ from replace_special_characters import replace_special_characters
 velog_id = os.getenv("VELOG_ID")
 if not velog_id:
    raise EnvironmentError("Environment variable 'NAME' is required but not set!")
-# velog_id = "cksgodl"  # For Test
 repo_path = '.'
-# repo_path = '/Users/user/velog_migration_scripts'  # For Test
 repo = git.Repo(repo_path)
 
 variables = {
     "username": velog_id,
-    "limit": 10  # 일일 10개의 글을 가져와 체크
+    "limit": 10  # 일일 10개의 글을 가져와 체크 (필요시 증가)
 }
 result = execute_graphql_query(velog_config.get_posts_query, variables)
 recent_posts = result['data']['posts']
@@ -28,7 +26,7 @@ print(f"Today: {current_date}")
 
 for post in recent_posts:
     released_at_date = datetime.fromisoformat(post["released_at"].replace("Z", "+00:00")).date()
-    print(f"Read Post - {post['title']}({released_at_date}) ")
+    print(f"Read Post - {post['title']} ({released_at_date}) ")
     if released_at_date == current_date:
         filtered_posts.append(post)
 

@@ -9,9 +9,7 @@ from replace_special_characters import replace_special_characters
 velog_id = os.getenv("VELOG_ID")
 if not velog_id:
     raise EnvironmentError("Environment variable 'NAME' is required but not set!")
-# name = "cksgodl" # For Test
 repo_path = '.'
-# repo_path = '/' # For Test
 repo = git.Repo(repo_path)
 
 series_list = send_graphql_query(query=velog_config.get_series_query, name=velog_id)
