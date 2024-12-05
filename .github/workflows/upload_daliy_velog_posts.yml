@@ -17,9 +17,12 @@ jobs:
     # Git Config 설정
     - name: Set up Git
       run: |
-        git config --global user.name "${{ secrets.GH_ID }}"
-        git config --global user.email "${{ secrets.GH_EMAIL }}"
-        git remote set-url origin https://${{ secrets.GH_ID }}:${{ secrets.GITHUB_PAT }}@github.com/${{ secrets.GH_ID }}/velog_migration_scripts.git
+      # TODO github id 설정
+        git config --global user.name 'dlgocks1' 
+      # TODO github email 설정
+        git config --global user.email 'cksgodl1@naver.com'
+      # TODO github id 및 레포지토리 설정
+        git remote set-url origin https://dlgocks1:${{ secrets.GH_PAT }}@github.com/dlgocks1/velog_migration_scripts.git
 
     # 원격 변경 사항을 로컬에 적용
     - name: Pull changes from remote
@@ -41,6 +44,7 @@ jobs:
     # Python 스크립트 실행
     - name: Run script
       env:
-        VELOG_ID: ${{ secrets.VELOG_ID }}  # velog_name을 환경 변수로 설정
+        # TODO velog_name 설정
+        VELOG_ID: "cksgodl"
       run: |
         python ./scripts/post_daliy_velog_posts_by_series/main.py
