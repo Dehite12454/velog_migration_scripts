@@ -4,7 +4,7 @@ on:
   workflow_dispatch:  # 수동 실행 트리거
 
 jobs:
-  batch_alL_velog_posts:
+  upload_all_velog_posts_by_series:
     runs-on: ubuntu-latest
 
     steps:

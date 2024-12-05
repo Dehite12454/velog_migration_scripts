@@ -48,7 +48,8 @@ for today_post in filtered_posts:
         continue
 
     with open(file_path, 'w', encoding='utf-8') as file:
-        print(f"Writing Poists {today_post['title']}")
+        print(f"Writing Post {today_post['title']}")
+        print(f"Writing Post Body {today_post['body']}")
         file.write(today_post['body'])
         commit_message = f"[UPDATE] {today_post['title']}"
         repo.git.add(file_path)
