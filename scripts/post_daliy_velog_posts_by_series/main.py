@@ -20,6 +20,7 @@ variables = {
 }
 result = execute_graphql_query(velog_config.get_posts_query, variables)
 recent_posts = result['data']['posts']
+print(f"Recent posts: {recent_posts}")
 
 filtered_posts = []
 current_date = datetime.now(timezone.utc).date()  # 현재 날짜 (UTC 기준)

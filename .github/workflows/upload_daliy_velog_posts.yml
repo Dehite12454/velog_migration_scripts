@@ -1,4 +1,4 @@
-name: Batch All Velog Posts
+name: Upload daily velog posts
 
 on:
   workflow_dispatch:  # 수동 실행 트리거
@@ -41,4 +41,4 @@ jobs:
       env:
         VELOG_ID: "cksgodl"  # velog_name을 환경 변수로 설정
       run: |
-        python ./scripts/batch_velog_posts_by_series/main.py
+        python ./scripts/post_daliy_velog_posts_by_series/main.py
