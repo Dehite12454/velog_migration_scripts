@@ -39,6 +39,6 @@ jobs:
     # Python 스크립트 실행
     - name: Run script
       env:
-        NAME: "cksgodl"  # velog_name을 환경 변수로 설정
+        VELOG_ID: "cksgodl"  # velog_name을 환경 변수로 설정
       run: |
         python ./scripts/batch_velog_posts_by_series/main.py

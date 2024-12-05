@@ -2,19 +2,19 @@ import os
 import git
 import sys
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
+# sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 
-from scripts.batch_velog_posts_by_series import velog_config
-from scripts.batch_velog_posts_by_series.get_all_posts_by_username import get_all_posts
-from scripts.batch_velog_posts_by_series.get_series_by_username import send_graphql_query
-from scripts.batch_velog_posts_by_series.replace_special_characters import replace_special_characters
+import velog_config
+from get_all_posts_by_username import get_all_posts
+from get_series_by_username import send_graphql_query
+from replace_special_characters import replace_special_characters
 
-name = os.getenv("NAME")  # 환경변수 NAME이 없을 경우 "default_name" 사용
+name = os.getenv("VELOG_ID")
 if not name:
     raise EnvironmentError("Environment variable 'NAME' is required but not set!")
-# name = "cksgodl"
+# name = "cksgodl" # For Test
 repo_path = '.'
-# repo_path = '/'
+# repo_path = '/' # For Test
 repo = git.Repo(repo_path)
 
 series_list = send_graphql_query(query=velog_config.get_series_query, name=name)
@@ -31,6 +31,7 @@ for series in series_list:
             filtered_posts.append(post)
 
     # 폴더 만들기
+    print(f"Add Series : [{series['name']}]")
     posts_dir = os.path.join(repo_path, series['name'])
     if not os.path.exists(posts_dir):
         os.makedirs(posts_dir)

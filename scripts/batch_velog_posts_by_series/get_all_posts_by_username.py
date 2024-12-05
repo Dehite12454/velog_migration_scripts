@@ -1,6 +1,6 @@
 import time
-from scripts.batch_velog_posts_by_series import velog_config
-from scripts.batch_velog_posts_by_series.execute_graphql_query import execute_graphql_query
+import velog_config
+from execute_graphql_query import execute_graphql_query
 
 
 def get_all_posts(username):

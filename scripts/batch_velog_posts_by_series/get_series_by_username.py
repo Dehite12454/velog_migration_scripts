@@ -1,4 +1,4 @@
-from scripts.batch_velog_posts_by_series.execute_graphql_query import execute_graphql_query
+from execute_graphql_query import execute_graphql_query
 
 
 def send_graphql_query(query, name):
