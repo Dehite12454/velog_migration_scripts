@@ -14,6 +14,7 @@ jobs:
 
     # Git Config 설정
     - name: Set up Git
+      # TODO github id, email, repository 설정
       run: |
         git config --global user.name 'dlgocks1'
         git config --global user.email 'cksgodl1@naver.com'
@@ -39,6 +40,7 @@ jobs:
     # Python 스크립트 실행
     - name: Run script
       env:
-        VELOG_ID: "cksgodl"  # velog_name을 환경 변수로 설정
+        # TODO velog_name 설정
+        VELOG_ID: "cksgodl"
       run: |
         python ./scripts/batch_velog_posts_by_series/main.py

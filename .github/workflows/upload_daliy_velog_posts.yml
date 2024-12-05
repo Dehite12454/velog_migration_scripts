@@ -2,8 +2,8 @@ name: Upload daily velog posts
 
 on:
   workflow_dispatch:  # 수동 실행 트리거
-#  schedule:
-#    - cron: '0 17 * * *'  # 매일 UTC 오후 5시 (KST 새벽 2시)
+  schedule:
+    - cron: '0 17 * * *'  # 매일 UTC 오후 5시 (KST 새벽 2시)
 
 jobs:
   upload_daily_velog_posts:
